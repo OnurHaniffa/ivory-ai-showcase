@@ -1,34 +1,104 @@
-# Ivory AI
+# Ivory AI — AI Chatbot & Virtual Receptionist for Local Businesses
 
-> Full-stack AI-powered virtual receptionist and lead generation platform for local businesses.
+> **Live:** [ivoryai.net](https://ivoryai.net) | **Status:** Active Development | **Source Code:** Private
 
-![Status](https://img.shields.io/badge/Status-Active_Development-brightgreen)
-![Python](https://img.shields.io/badge/Python-3.12-blue)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688)
-![OpenAI](https://img.shields.io/badge/OpenAI-GPT--4o--mini-412991)
-![Tests](https://img.shields.io/badge/Tests-141%2B_passing-success)
-
-> **Note:** This repository is a project showcase. The source code is maintained in a private repository.
+Ivory AI is a production-grade SaaS platform that gives local businesses an AI-powered virtual receptionist. It answers customer questions 24/7, captures leads automatically, and handles after-hours visitors — starting at $97/month with a 30-day free trial. Built end-to-end as a solo developer: backend, frontend, AI engine, scraping pipeline, email outreach, payments, and infrastructure.
 
 ---
 
-## Overview
+## Live Product Screenshots
 
-Ivory AI is a production-grade SaaS platform that serves as an AI-powered virtual receptionist for local businesses, starting with dental practices. The system operates on two levels:
+### Landing Page
 
-1. **B2B Lead Generation Engine** — Automatically discovers businesses via Google Maps scraping, analyzes their websites for gaps (no chatbot, no online booking, no after-hours support), enriches leads with owner data, generates personalized AI chatbot demos, and sends targeted outreach emails.
+![Ivory AI Landing Page — Hero Section](assets/ivory-landing-hero.png)
 
-2. **Customer-Facing SaaS Product** — Business owners sign up, go through automated onboarding (website auto-scraped), and receive an embeddable AI chatbot widget. The chatbot acts as a virtual receptionist — answering questions, capturing leads, and handling after-hours visitors.
-
-**Business Model:** 30-day free trial → $97/month per business via Lemon Squeezy.
+The hero section with animated stats showing **24/7 availability**, **<2s response time**, and **$0 setup fee**. Designed to immediately communicate value with a clear CTA and live demo link.
 
 ---
 
-## Architecture
+### The Problem We Solve
+
+![The Problem — Missed Calls Cost Real Money](assets/ivory-stats-problem.png)
+
+**35% of customer inquiries go unanswered** outside business hours — that's **$500+ in lost revenue** per missed opportunity. Ivory AI makes sure no lead slips through the cracks.
+
+---
+
+### How It Works
+
+![How It Works — Three Simple Steps](assets/ivory-how-it-works.png)
+
+Three-step process: **We build your AI agent** from your website data → **It talks to your customers** 24/7 → **You grow your business** with captured leads and booked appointments.
+
+---
+
+### Features
+
+![Core Features Overview](assets/ivory-features.png)
+
+Always-on availability, trained on your actual business data, smart booking integration, and automatic lead capture — all without lifting a finger.
+
+---
+
+### Cost Comparison
+
+![Cost Comparison Table](assets/ivory-comparison-table.png)
+
+Ivory AI at **$97/mo** vs. answering services (**$800–$2,000/mo**) vs. hiring extra staff (**$3,000+/mo**). The economics speak for themselves.
+
+---
+
+### Pricing
+
+![Simple Flat-Rate Pricing](assets/ivory-pricing.png)
+
+One plan. One price. **30-day free trial** with no credit card required. Cancel anytime.
+
+---
+
+## AI Chatbot In Action
+
+### Live Chatbot Widget
+
+![Ivory AI Chatbot Widget — Live on Client Website](assets/ivory-chatbot-live.png)
+
+The Ivory AI chatbot widget deployed on a real client website ([onurhaniffa.com](https://onurhaniffa.com)), showing the greeting message with quick-action buttons for common inquiries.
+
+---
+
+### Real AI Conversation
+
+![Live AI Conversation — Personalized Business Response](assets/ivory-chatbot-conversation.png)
+
+A live conversation where the AI answers **"What services do you offer?"** with a detailed, personalized response generated from the business's scraped website data. Every response is unique to the business — no generic templates.
+
+---
+
+## Industry-Specific Landing Pages
+
+### Dental Practices
+
+![Dentist Landing Page — Industry-Specific Messaging](assets/ivory-dentist-landing.png)
+
+![Dentist Features — Tailored for Dental Practices](assets/ivory-dentist-features.png)
+
+**24+ SEO-optimized landing pages** for different industries and cities, each with industry-specific pain points, features, and social proof tailored to that vertical.
+
+---
+
+### Demo Section & Industries
+
+![Demo Section and Industry Cards](assets/ivory-industries.png)
+
+Live demo section with direct links to try the AI receptionist, plus industry cards for **Healthcare**, **Professional Services**, and **Local Businesses** — each linking to dedicated landing pages.
+
+---
+
+## Technical Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                        IVORY AI PLATFORM                         │
+│                        IVORY AI PLATFORM                        │
 ├─────────────┬──────────────┬──────────────┬─────────────────────┤
 │  Scraping   │   Chatbot    │   Outreach   │   Customer Portal   │
 │  Pipeline   │   Engine     │   System     │   & Dashboard       │
@@ -39,156 +109,58 @@ Ivory AI is a production-grade SaaS platform that serves as an AI-powered virtua
 │ Analyzer    │ Scraped Data │ Follow-up    │ Lead Management     │
 │ Hunter.io   │ Lead Capture │ Automation   │ Billing Portal      │
 ├─────────────┴──────────────┴──────────────┴─────────────────────┤
-│              FastAPI + SQLAlchemy + PostgreSQL                    │
-│              Docker + Railway Deployment                         │
+│              FastAPI + SQLAlchemy + PostgreSQL                   │
+│              Docker + Railway Deployment                        │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
----
-
-## Tech Stack
-
-### Backend
-| Technology | Purpose |
-|---|---|
-| **FastAPI** | Async web framework — the entire REST API |
-| **SQLAlchemy 2.0** | Async ORM with PostgreSQL (prod) / SQLite (dev) |
-| **Alembic** | Database migrations (8 migration files) |
-| **OpenAI API** (GPT-4o-mini) | Powers the conversational AI chatbot |
-| **Playwright** | Headless browser for Google Maps scraping & website analysis |
-| **BeautifulSoup + lxml** | HTML parsing for content extraction |
-| **Resend** | Transactional email delivery |
-| **Hunter.io** | Email discovery for lead enrichment |
-| **APScheduler** | Background job scheduling |
-| **PyJWT + bcrypt** | Authentication with HTTP-only cookie tokens |
-| **Pydantic Settings** | Typed configuration management |
-
-### Frontend
-| Technology | Purpose |
-|---|---|
-| **Tailwind CSS** | Self-hosted, purged/minified build (55KB) |
-| **Vanilla JavaScript** | Embeddable chat widget (~400 lines) |
-| **Alpine.js** | Lightweight dashboard interactivity |
-| **Jinja2** | Server-side HTML templating |
-
-### Infrastructure
-| Technology | Purpose |
-|---|---|
-| **Docker** | Production-ready containerization |
-| **Railway** | Deployment platform |
-| **PostgreSQL** | Production database |
-| **Lemon Squeezy** | Payment processing & subscription management |
-| **Google Analytics 4** | Conditional analytics |
+| Layer | Technologies |
+|-------|-------------|
+| **Backend** | Python, FastAPI, SQLAlchemy 2.0 (async), Alembic, PostgreSQL |
+| **AI Engine** | OpenAI GPT-4o-mini with dynamic prompt generation from scraped business data |
+| **Scraping Pipeline** | Playwright (headless, anti-detection), BeautifulSoup, Hunter.io |
+| **Email System** | Resend API with open/click tracking, timezone-aware sending windows |
+| **Payments** | Lemon Squeezy with HMAC-SHA256 webhook verification |
+| **Auth** | PyJWT + bcrypt, HTTP-only cookies, rate limiting, account lockout |
+| **Frontend** | Tailwind CSS, Jinja2, Alpine.js, embeddable chat widget (~400 lines JS) |
+| **Infrastructure** | Docker, Railway, APScheduler |
 
 ---
 
-## Key Features
-
-### Intelligent Lead Generation Pipeline
-
-- **Google Maps Scraping** — Playwright-based with anti-detection (randomized user agents, viewports, stealth scripts, consent dialog handling) + Outscraper API fallback
-- **Website Intelligence** — Detects 23+ chatbot providers (Intercom, Drift, Zendesk, Tidio...), 15+ booking platforms, CMS detection (WordPress, Squarespace, Wix...), SSL, mobile viewport, social links, and more
-- **Opportunity Scoring** — Algorithm scores businesses 0-10 based on detected gaps
-- **Lead Enrichment** — Owner/dentist name extraction from team pages + Hunter.io email discovery with pattern-based fallback
-- **Pipeline Orchestration** — Single CLI command: scrape → analyze → enrich → build demos
-
-### AI Chatbot Engine
-
-- **GPT-4o-mini Powered** with per-business personalized system prompts (2000+ chars)
-- **Dynamic Prompt Generation** from scraped data: services, hours, insurance, team members, FAQ, raw website content
-- **Multi-Business-Type Support** — dental, legal, medical, home services, accounting, real estate
-- **Intelligent Lead Capture** woven into natural conversation flow
-- **After-Hours Awareness** using timezone-based context
-- **Session Management** with LRU eviction (max 1000 concurrent sessions)
-
-### Embeddable Chat Widget (`ivory.js`)
-
-- Self-contained, drop-in JavaScript widget (~400 lines)
-- Theme system (dentist, lawyer, software, medical, general) with custom colors
-- Dynamic config fetching from server for live customization
-- Quick reply buttons, typing indicators, proactive greeting popup
-- Full-screen mobile mode with responsive design
-- Accessibility: `prefers-reduced-motion`, ARIA labels
-
-### Email Outreach System
-
-- Personalized initial outreach with gap-based observations
-- Automated 7-day follow-up sequences
-- Open/click tracking via tracking pixel and redirect URLs
-- Business-hours-aware sending windows (timezone-aware per US state)
-- Daily sending caps with configurable limits
-- Unsubscribe with HMAC-signed URLs
-
-### Customer Self-Service Portal
-
-- Full auth system: signup, email verification, login, forgot/reset password
-- Rate limiting (5 login attempts/15 min), account lockout (10 failures → 30-min lock)
-- Timing attack prevention (bcrypt always runs, even on non-existent accounts)
-- Onboarding flow, dashboard, conversation viewer, lead management
-- Widget customization and account settings
-
-### SEO & Marketing
-
-- 10 city-specific landing pages targeting local SEO
-- 4 industry-specific landing pages
-- 10 blog articles targeting high-intent keywords
-- JSON-LD structured data throughout
-- Self-hosted assets for performance
-
----
-
-## Security
-
-- **CSRF Middleware** — Origin-based validation for cookie-authenticated routes
-- **Security Headers** — CSP, X-Frame-Options, HSTS, X-Content-Type-Options, Referrer-Policy, Permissions-Policy
-- **Webhook Signature Verification** — HMAC SHA-256 for Lemon Squeezy webhooks
-- **Production Startup Guards** — App crashes on boot if default secrets are unchanged
-- **Token Versioning** — All sessions invalidated on password change
-- **Rate Limiting** — Per-IP limits on login, signup, and password reset endpoints
-
----
-
-## Testing
-
-**141+ tests** covering every module:
-
-- Config & database layer
-- Scraper & website analyzer
-- Chatbot engine & prompt generation
-- Pipeline orchestration
-- Email sender & tracking
-- Authentication & authorization
-- Billing & webhook handling
-- Dashboard & admin routes
-- Security middleware
-- Widget configuration
-- Blog & SEO pages
-- Background scheduler
-
----
-
-## Project Metrics
+## Key Metrics
 
 | Metric | Value |
-|---|---|
-| **Source Files** | 100+ |
-| **Database Models** | 5 models, 80+ columns |
-| **API Route Modules** | 11 |
-| **Database Migrations** | 8 |
-| **Test Count** | 141+ |
-| **Chatbot Provider Detections** | 23+ |
-| **CMS Detections** | 9+ |
-| **Landing Pages** | 24+ |
-| **Development Period** | Feb 2025 – Present (active) |
+|--------|-------|
+| Automated Tests | **141+** |
+| Source Files | **100+** |
+| Database Models | **5** (80+ columns) |
+| API Route Modules | **11** |
+| DB Migrations | **8** |
+| Chatbot Provider Detections | **23+** |
+| Booking Platform Detections | **15+** |
+| SEO Landing Pages | **24+** |
 
 ---
 
-## My Role
+## Key Technical Achievements
+
+- **Anti-detection scraping** — Randomized user agents, viewports, stealth scripts, and consent dialog handling with Outscraper API fallback
+- **Dynamic AI prompt generation** — 2000+ character system prompts built from scraped business data (services, hours, insurance, team, FAQ)
+- **Multi-strategy webhook matching** — Lemon Squeezy webhooks matched via email, customer ID, or subscription metadata
+- **Security hardening** — CSRF middleware, CSP headers, HSTS, production startup guards that crash the app if default secrets are unchanged
+- **Timing attack prevention** — bcrypt always runs on login, even for non-existent accounts
+- **Full email pipeline** — Personalized outreach with 7-day follow-ups, open/click tracking, timezone-aware sending, HMAC-signed unsubscribe URLs
+- **Website intelligence** — Detects 23+ chatbot providers, 15+ booking platforms, 9+ CMS platforms, SSL, mobile viewport, social links
+- **Opportunity scoring** — Algorithm scores businesses 0–10 based on detected gaps to prioritize outreach
+- **Session management** — LRU eviction with max 1000 concurrent chatbot sessions
+- **Embeddable widget** — Self-contained ~400-line JS widget with theme system, responsive design, accessibility support
+
+---
+
+## Built By
+
+**Onur Haniffa** — Full-Stack Developer & ML Engineer
 
 I built this entire platform solo — backend, frontend, infrastructure, security, email system, payment integration, AI chatbot engine, scraping pipeline, and SEO. Every line of code, every database migration, every test.
 
----
-
-## Contact
-
-**Onur Haniffa** — [onurhaniffa.com](https://onurhaniffa.com) · [LinkedIn](https://www.linkedin.com/in/onurhaniffa/)
+[Portfolio](https://onurhaniffa.com) · [LinkedIn](https://linkedin.com/in/onurhaniffa) · [GitHub](https://github.com/OnurHaniffa)
